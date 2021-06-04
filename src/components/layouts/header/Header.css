@@ -1,0 +1,51 @@
+/*
+<header class='header'>
+    {content}
+    <nav>
+        <ul class='navbar'>
+            <li>
+                <a>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+*/
+
+.header {
+
+    padding: 0 10vw 0 10vw;
+
+    display: flex;
+    margin: 0;
+
+    flex-direction: row;
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+/* NAVBAR */
+
+
+.navbar {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    list-style-type: none;
+
+}
+
+.navbar>li {
+    padding: 0 .5rem 0 .5rem;
+}
+
+.navbar>li>a {
+
+    text-decoration: none;
+    color: black;
+
+}

@@ -13,6 +13,6 @@
       "noUnusedParameters": true,
       "removeComments": false
     },
-    "include": ["./src/**/*"]
+    "include": ["./src/**/*", "index.module.css.d.ts"]
   }
   
