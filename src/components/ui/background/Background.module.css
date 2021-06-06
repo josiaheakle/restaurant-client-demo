@@ -1,0 +1,21 @@
+.background {
+
+    top: 0;
+    left: 0;
+    position: fixed;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-position: center;
+    background-size: cover;
+    /* z-index: -10; */
+
+}
+
+.border {
+
+
+    width: calc(100vw - 8rem);
+    height: calc(100vh - 8rem);
+    border: 4rem solid var(--black);
+
+}

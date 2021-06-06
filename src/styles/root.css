@@ -1,3 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
+
+:root {
+
+    --seal-brown: #542B15ff;
+    --citron: #94950Cff;
+    --rich-black-fogra-39: #090F0Fff;
+    --cadet-grey: #A0ADB2ff;
+    --maximum-yellow-red: #E49400ff;
+
+    --green: var(--citron);
+    --yellow: var(--maximum-yellow-red);
+    --grey: var(--cadet-grey);
+    --black: var(--rich-black-fogra-39);
+    --brown: var(--seal-brown);
+
+    
+
+}
+
 body {
     margin: 0;
 }
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Mate SC', serif;
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 4.209rem;
+  }
+  
+  h2 {font-size: 3.157rem;}
+  
+  h3 {font-size: 2.369rem;}
+  
+  h4 {font-size: 1.777rem;}
+  
+  h5 {font-size: 1.333rem;}
+  
+  small, .text_small {font-size: 0.75rem;}
