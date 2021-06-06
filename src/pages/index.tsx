@@ -2,10 +2,14 @@
 import * as React from "react";
 import { graphql, Link, StaticQuery, useStaticQuery } from "gatsby";
 
+
+
 // components
-import { Background } from "../components/ui/background/Background";
-import { ButtonLinkContainer } from "../components/ui/buttons/ButtonLinkContainer";
 import { MainLayout } from "../components/layouts/MainLayout";
+import { Background } from "../components/ui/background/Background";
+
+import { FeaturedItemGallery } from "../components/features/featured-items/FeaturedItemGallery";
+import { About } from "../components/features/about/About";
 
 // css
 import "../styles/root.css";
@@ -28,20 +32,22 @@ const backgroundImgQuery = graphql`
 `;
 
 // featured items image query
-const featuredItemsQuery = graphql`
-  query {
-    allStrapiCategory(filter: { title: { eq: "Featured" } }) {
-      nodes {
-        menu_items {
-          preview {
-            alternativeText
-            url
-          }
-        }
-      }
-    }
-  }
-`;
+// const featuredItemsQuery = graphql`
+//   query {
+//     allStrapiCategory(filter: { title: { eq: "Featured" } }) {
+//       nodes {
+//         menu_items {
+//           preview {
+//             alternativeText
+//             url
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
+
+
 
 const pages = [
   {
@@ -49,8 +55,8 @@ const pages = [
     link: "/",
   },
   {
-  title: "About",
-  link: "/about",
+    title: "About",
+    link: "/about",
   },
   {
     title: "Menu",
@@ -92,19 +98,31 @@ const subMainStyle: React.CSSProperties = {
   justifyContent: "center",
 };
 
+
 const IndexPage: React.FunctionComponent = () => {
   
   const bgImg =
     useStaticQuery(backgroundImgQuery).allFile.edges[0].node.publicURL;
 
+
   return (
-    <Background backgroundImg={bgImg}>
+    // <Background backgroundImg={bgImg}>
       <MainLayout pages={pages} pageTitle="Bob's Bistreaux">
       
+      {/* home -> featured item images */}
+      <FeaturedItemGallery></FeaturedItemGallery>
 
+      {/* menu -> links to each menu */}
+
+      {/* about ->  */}
+      <About>
+
+      </About>
+
+      {/* location -> google map */}
       
       </MainLayout>
-    </Background>
+    // </Background>
   );
 };
 
