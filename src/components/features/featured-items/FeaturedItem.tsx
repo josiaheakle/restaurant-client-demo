@@ -5,7 +5,9 @@ interface FeaturedItemProps {
 }
 
 const FeaturedItem: React.FC<FeaturedItemProps> = ({}) => {
-    return ();
+    return (
+        <div></div>
+    );
 }
 
 export {FeaturedItem};
