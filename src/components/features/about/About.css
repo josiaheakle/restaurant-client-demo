@@ -1,0 +1,33 @@
+.aboutContainer {
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.aboutContainer > .split {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 4rem 0 4rem;
+    background-color: var(--light);
+
+    background-position-x: right;
+    background-size: contain;
+    background-attachment: fixed;
+
+}
+
+
+.aboutContainer > .split.left {
+    height: calc(100vh - 16rem);
+    border: 8rem solid var(--light);
+}

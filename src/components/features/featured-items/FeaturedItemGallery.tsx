@@ -4,24 +4,21 @@ import ImageGallery from "react-image-gallery";
 
 import { getImageUrl } from "../../../util/getImageUrl";
 
+
+
 // @ts-ignore
 import  "./FeaturedItem.css";
+import { FeaturedItem } from "./FeaturedItem";
 
 const featuredItemImageQuery = graphql`
 	query {
 		allStrapiCategory(filter: { title: { eq: "Featured" } }) {
 			nodes {
 				menu_items {
+					slug
 					preview {
 						url
-						formats {
-							large {
-								url
-							}
-							thumbnail {
-								url
-							}
-						}
+						alternativeText
 					}
 					description
 					title
@@ -40,6 +37,7 @@ interface FeaturedItem {
 		original: string;
 		thumbnail: string;
 	};
+	slug: string;
 }
 
 /**
@@ -48,35 +46,37 @@ interface FeaturedItem {
  */
 const FeaturedItemGallery: React.FC<FeaturedItemGalleryProps> = ({}) => {
 
-	const [title, setTitle] = React.useState<string>();
-	const [descr, setDescr] = React.useState<string>();
-	const [activeItem, setActiveItem] = React.useState<number>(0);
-
 	const featuredItems: Array<FeaturedItem> = useStaticQuery(
 		featuredItemImageQuery
 	).allStrapiCategory.nodes[0].menu_items.map((menuItem: any) => {
 		return {
+			slug: menuItem.slug,
 			title: menuItem.title,
 			descr: menuItem.description,
 			preview: {
-				original: getImageUrl(menuItem.preview[0].formats.large.url),
-				thumbnail: getImageUrl(menuItem.preview[0].formats.thumbnail.url),
+				original: getImageUrl(menuItem.preview[0].url)
 			},
 		};
 	});
 
+	const [title, setTitle] = React.useState<string>(featuredItems[0].title);
+	const [descr, setDescr] = React.useState<string>(featuredItems[0].descr);
+	const [slug, setSlug] = React.useState<string>(featuredItems[0].slug);
+	// const [activeItem, setActiveItem] = React.useState<number>(0);
+
 	const updateActiveItem = (index: number) => {
-		setActiveItem(index);
+		// setActiveItem(index);
+		setSlug(featuredItems[index].slug);
 		setTitle(featuredItems[index].title);
 		setDescr(featuredItems[index].descr);
 	};
 
-	React.useEffect(()=>{
-		updateActiveItem(0);
-	}, [])
+	// React.useEffect(()=>{
+	// 	updateActiveItem(0);
+	// }, [])
 
 	return (
-		<>
+		<div className='FeaturedItemGalleryContainer'>
 			<ImageGallery
 				items={featuredItems.map((i) => {
 					return i.preview;
@@ -88,24 +88,17 @@ const FeaturedItemGallery: React.FC<FeaturedItemGalleryProps> = ({}) => {
                 infinite={true}
 				// showNav={false}
                 autoPlay={true}
+				slideInterval={5000}
+				additionalClass='featuredItemGallery'
                 renderItem={(i) => {
-                    // console.log(i);
                     return (
-                        <div className='featuredItem' style={{backgroundImage:`url(${i.original})`}}>
-                            <div className='featuredItemInfo'>
-								<div>
-									<h3>{title}</h3>
-									<span>{descr}</span>
-								</div>
-                            </div>
-                        </div>
-                    )
-                    
+						<FeaturedItem slug={slug} imgSrc={i.original} title={title} descr={descr}></FeaturedItem>
+                    );
                 }}
 			>
             </ImageGallery>
 
-		</>
+		</div>
 	);
 };
 

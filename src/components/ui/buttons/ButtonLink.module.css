@@ -1,17 +1,17 @@
 .buttonLink {
-    margin: 1rem;
-}
-
-.buttonLink > button {
     cursor: pointer;
     padding: .5rem 1rem .5rem 1rem;
-    background-color: var(--grey);
+    background-color: var(--light);
     border: 1px solid black;
     border-radius: 0;
-    transition: opacity 200ms ;
+    transition: opacity 200ms;
+    text-decoration: none;
+    color: black;
+    width: fit-content;
 }
 
-.buttonLink > button:hover {
+
+.buttonLink:hover {
     opacity: 80%;
     text-decoration: underline;
 }

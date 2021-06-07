@@ -1,9 +1,27 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
+/* .featuredItemGallery {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+} */
+
+/* .FeaturedItemGalleryContainer {
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+} */
+
 .featuredItem {
     background-position: center;
+    background-attachment: fixed;
     background-size: cover;
     height: 100vh;
+    /* position: fixed; */
+    width: 100vw;
+    top: 0;
+    left: 0;
 }
 
 .featuredItemInfo {
@@ -21,11 +39,17 @@
 .featuredItemInfo > div {
     text-align: left;
     border-radius: 8px;
-    background-color: var(--yellow);
+    background-color: var(--pumpkin);
     padding: 4rem;
     width: 30vw;
+    line-height: 1em;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 4px 4px var(--black) ;
 }
 
-.featuredItemInfo > div > span {
+.featuredItemInfo > div > p {
     display: inline-block;
+    line-height: 1em;
+    white-space: normal;
 }

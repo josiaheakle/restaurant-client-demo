@@ -12,9 +12,7 @@ interface ButtonProps {
 export const ButtonLink: React.FC<ButtonProps> = ({title, link}) => {
     return (
         <Link className={buttonLink} to={link}>
-            <button>
-                {title}
-            </button>
+            {title}
         </Link>
     );
 }

@@ -19,6 +19,7 @@
     top:0px;
     left: 0px;
     width: calc(100vw - 20vw);
+    height: 80px;
 
     padding: 0 10vw 0 10vw;
 
@@ -30,7 +31,9 @@
 
     justify-content: space-between;
 
-    background-color: var(--yellow);
+    background-color: var(--light);
+    /* background: linear-gradient(var(--blue), transparent); */
+
 
 }
 
@@ -56,4 +59,8 @@
     text-decoration: none;
     color: black;
 
+}
+
+.navbar>li>a:hover {
+    text-decoration: underline;
 }

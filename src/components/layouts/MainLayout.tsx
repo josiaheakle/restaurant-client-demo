@@ -11,7 +11,8 @@ interface MainLayoutProps {
     }
     pages: Array<{
         title: string;
-        link: string;
+        link?: string;
+        elemId?:string;
     }>
 }
 

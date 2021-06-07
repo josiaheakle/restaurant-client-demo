@@ -10,6 +10,7 @@ import { Background } from "../components/ui/background/Background";
 
 import { FeaturedItemGallery } from "../components/features/featured-items/FeaturedItemGallery";
 import { About } from "../components/features/about/About";
+import { FoodMenuContainer } from "../components/features/food-menu/FoodMenuContainer";
 
 // css
 import "../styles/root.css";
@@ -52,19 +53,19 @@ const backgroundImgQuery = graphql`
 const pages = [
   {
     title: "Home",
-    link: "/",
+    elemId: "home",
   },
   {
     title: "About",
-    link: "/about",
+    elemId: "about",
   },
   {
     title: "Menu",
-    link: "/menu",
+    elemId: "menu",
   },
   {
     title: "Find Us",
-    link: "/location",
+    elemId: "location",
   },
 ];
 
@@ -110,14 +111,16 @@ const IndexPage: React.FunctionComponent = () => {
       <MainLayout pages={pages} pageTitle="Bob's Bistreaux">
       
       {/* home -> featured item images */}
-      <FeaturedItemGallery></FeaturedItemGallery>
+      <FeaturedItemGallery ></FeaturedItemGallery>
 
       {/* menu -> links to each menu */}
 
       {/* about ->  */}
       <About>
-
       </About>
+
+      <FoodMenuContainer>
+      </FoodMenuContainer>
 
       {/* location -> google map */}
       

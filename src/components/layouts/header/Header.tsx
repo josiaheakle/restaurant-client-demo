@@ -11,7 +11,8 @@ interface HeaderProps {
   };
   pages?: Array<{
     title: string;
-    link: string;
+    link?: string;
+    elemId?:string;
   }>;
 }
 
@@ -19,7 +20,7 @@ export const Header: React.FC<HeaderProps> = ({ pages, pageTitle, icon }) => {
   return (
     <header className='header'>
       {icon ? <img src={icon.src} alt={icon.alt}></img> : null}
-      {pageTitle ? <h2>{pageTitle}</h2> : null}
+      {pageTitle ? <h3>{pageTitle}</h3> : null}
       {pages ? (
         <nav>
           <Navbar links={pages} />

@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
 
 :root {
 
@@ -8,22 +11,41 @@
     --cadet-grey: #A0ADB2ff;
     --maximum-yellow-red: #E49400ff;
 
+    --rosso-corsa: #DD1002ff;
+    --pumpkin: #FB7925ff;
+    --hunter-green: #465937ff;
+    --lincoln-green: #2F570Cff;
+    --alice-blue: #E6E9EEff;
+    --han-blue: #4B6CB6ff;
+
     --green: var(--citron);
     --yellow: var(--maximum-yellow-red);
     --grey: var(--cadet-grey);
     --black: var(--rich-black-fogra-39);
     --brown: var(--seal-brown);
 
-    
+    --red: var(--rosso-corsa);
+    --orange: var(--pumpkin);
+    --dark-green: var(--lincoln-green);
+    --light: var(--alice-blue);
+    --blue: var(--han-blue);
+
 
 }
 
 body {
     margin: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 h1,h2,h3,h4,h5,h6 {
-    font-family: 'Mate SC', serif;
+    /* font-family: 'Mate SC', serif; */
+    font-family: 'Montserrat', sans-serif;
+}
+
+p, span, div {
+    font-family: 'Courier New';
 }
 
 h1 {
