@@ -38,7 +38,7 @@
 
 .featuredItemInfo > div {
     text-align: left;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     background-color: var(--pumpkin);
     padding: 4rem;
     width: 30vw;

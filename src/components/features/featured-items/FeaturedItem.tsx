@@ -16,7 +16,7 @@ const FeaturedItem: React.FC<FeaturedItemProps> = ({imgSrc, title, descr, slug})
             <div>
                 <h3>{title}</h3>
                 <p>{descr}</p>
-                <ButtonLink link={`/menu-item/${slug}`} title={'View'}></ButtonLink>
+                <ButtonLink link={`/menu-item/${slug}`} title={'view'}></ButtonLink>
             </div>
         </div>
     </div>    );

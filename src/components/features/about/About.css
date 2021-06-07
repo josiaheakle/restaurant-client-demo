@@ -20,14 +20,38 @@
     padding: 0 4rem 0 4rem;
     background-color: var(--light);
 
-    background-position-x: right;
+    /* background-position-x: right;
     background-size: contain;
-    background-attachment: fixed;
+    background-attachment: fixed; */
 
 }
 
 
 .aboutContainer > .split.left {
-    height: calc(100vh - 16rem);
-    border: 8rem solid var(--light);
+
+    align-items: center;
+    /* height: calc(100vh - 16rem); */
+    /* border: 8rem solid var(--light); */
+    /* outline-; */
+}
+
+.aboutContainer > .split.left > img {
+
+    width: 30vw;
+    height: clamp(50vw auto 90vh);
+}
+
+
+.aboutInformation * {
+    padding: 8px;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.aboutInformation > h3 {
+    border-color: var(--orange);
+}
+
+.aboutContainer > .split.right {
+    padding-left: 0px;
 }

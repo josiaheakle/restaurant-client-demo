@@ -10,7 +10,8 @@ import { Background } from "../components/ui/background/Background";
 
 import { FeaturedItemGallery } from "../components/features/featured-items/FeaturedItemGallery";
 import { About } from "../components/features/about/About";
-import { FoodMenuContainer } from "../components/features/food-menu/FoodMenuContainer";
+import { Location } from "../components/features/location/Location";
+import { FoodMenuCardContainer } from "../components/features/food-menu/FoodMenuCardContainer";
 
 // css
 import "../styles/root.css";
@@ -119,8 +120,10 @@ const IndexPage: React.FunctionComponent = () => {
       <About>
       </About>
 
-      <FoodMenuContainer>
-      </FoodMenuContainer>
+      <FoodMenuCardContainer>
+      </FoodMenuCardContainer>
+
+      <Location></Location>
 
       {/* location -> google map */}
       

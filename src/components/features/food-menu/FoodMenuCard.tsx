@@ -1,8 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby';
+import { ButtonLink } from '../../ui/buttons/ButtonLink';
 import * as React from 'react';
 
-// @ts-ignore
-import { FoodMenu as style } from "./FoodMenu.module.css";
+import  "./FoodMenu.css";
 
 interface FoodMenuCardProps {
     title:string;
@@ -15,11 +15,12 @@ const FoodMenuCard: React.FC<FoodMenuCardProps> = ({title, imgSrc, descr}) => {
     console.log({title,imgSrc,descr})
 
     return (
-        <div className={style}>
+        <div className='FoodMenuCard'>
             <h3>{title}</h3>
             
             <span>{descr}</span>
-            <button>view menu</button>
+            <br/>
+            <ButtonLink  link='asdf' title='view'></ButtonLink>
         </div>
     );
 }

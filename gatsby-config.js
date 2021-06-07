@@ -22,7 +22,8 @@ module.exports = {
         collectionTypes: [
           "menu",
           "menu-item",
-          "category"
+          "category",
+          "section"
         ],
         queryLimit: 1000,
       },

@@ -1,28 +1,53 @@
-import * as React from 'react';
+import { graphql, StaticQuery } from "gatsby";
+import * as React from "react";
+import { getImageUrl } from "../../../util/getImageUrl";
 
-import  "./About.css";
+import "./About.css";
 
+interface AboutProps {}
 
-
-
-interface AboutProps {
-    
-}
+const sectionQuery = graphql`
+	query {
+		allStrapiSection(filter: { section: { eq: "about" } }) {
+			nodes {
+				preview {
+					alternativeText
+					url
+					width
+					height
+				}
+				title
+				subtitle
+				description
+			}
+		}
+	}
+`;
 
 const About: React.FC<AboutProps> = ({}) => {
-    return (
-        <div className='aboutContainer' id='about'>
-            <div className='split left' style={{backgroundImage:`url(/static/chef-ac0d2cbee40f659fc2ab93e73d8a1e99.jpg)`}}></div>
-            <div className='split right'>
-                <h5>head chef</h5>
-                <h3>Aurthur Jones</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, cum. A perspiciatis ut numquam voluptates eos maiores incidunt? Beatae illo alias unde error possimus eos minus vel, provident aperiam velit.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus at accusamus quaerat saepe magnam obcaecati blanditiis soluta sed iure! Consequuntur, ea odit quos eum velit illo fugit animi repellendus corporis?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore tenetur officia, saepe provident, corporis dignissimos perferendis et nemo ipsum modi, ab non reprehenderit tempore ipsam quia sed similique animi assumenda.
-                </p>
-            </div>
-        </div>
-    );
-}
+	return (
+    <StaticQuery query={sectionQuery} render={(data)=>{
+        const info : { preview: {alternativeText:string;url:string;width:number;height:number;}; title:string; subtitle:string; description:string;} = (data.allStrapiSection.nodes[0]);
+        console.log(data);
+        return(
+        <div className="aboutContainer" id="about">
+			<div
+				className="split left"
+				style={{
+                    // backgroundImage: `url(${getImageUrl(info.preview.url)})`
+				}}
+                >
 
-export {About};
+                    <img src={getImageUrl(info.preview.url)} alt={info.preview.alternativeText} />
+                </div>
+			<div className="split right aboutInformation">
+				<h5>{info.subtitle}</h5>
+				<h3>{info.title}</h3>
+				<p>{info.description}</p>
+			</div>
+		</div>
+    )}}/>
+	);
+};
+
+export { About };
