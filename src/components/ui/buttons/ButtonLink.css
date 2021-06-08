@@ -1,0 +1,20 @@
+.ButtonLink {
+	cursor: pointer;
+	padding: 0.5rem 1rem 0.5rem 1rem;
+	background-color: var(--light);
+	border: 1px solid black;
+	border-radius: 0;
+	transition: opacity 200ms, background-color 200ms;
+	text-decoration: none;
+	color: black;
+	width: fit-content;
+}
+
+.ButtonLink:hover {
+	opacity: 80%;
+	text-decoration: underline;
+}
+
+.ButtonLink.selected {
+	background-color: var(--orange);
+}

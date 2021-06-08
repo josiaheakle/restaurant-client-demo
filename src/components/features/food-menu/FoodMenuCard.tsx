@@ -1,28 +1,27 @@
-import { graphql, useStaticQuery } from 'gatsby';
-import { ButtonLink } from '../../ui/buttons/ButtonLink';
-import * as React from 'react';
+import { graphql, useStaticQuery } from "gatsby";
+import * as React from "react";
 
-import  "./FoodMenu.css";
+import { ButtonLink } from "../../ui/buttons/ButtonLink";
+import { FoodMenuItem } from "./FoodMenuItem";
+
+import "./FoodMenu.css";
+import { Menu } from "../../../types/QueryTypes";
 
 interface FoodMenuCardProps {
-    title:string;
-    imgSrc:string;
-    descr:string;
+	menu: Menu;
 }
 
-const FoodMenuCard: React.FC<FoodMenuCardProps> = ({title, imgSrc, descr}) => {
+const FoodMenuCard: React.FC<FoodMenuCardProps> = ({ menu }) => {
+	return (
+		<div className="FoodMenuCard">
+			<h3>{menu.title}</h3>
 
-    console.log({title,imgSrc,descr})
+			<span>{menu.description}</span>
+			{menu.menu_items.map((item, index) => {
+				return <FoodMenuItem key={index} menuItem={item}></FoodMenuItem>;
+			})}
+		</div>
+	);
+};
 
-    return (
-        <div className='FoodMenuCard'>
-            <h3>{title}</h3>
-            
-            <span>{descr}</span>
-            <br/>
-            <ButtonLink  link='asdf' title='view'></ButtonLink>
-        </div>
-    );
-}
-
-export {FoodMenuCard};
+export { FoodMenuCard };

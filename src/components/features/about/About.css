@@ -1,57 +1,50 @@
 .aboutContainer {
+	width: 100vw;
+	height: 100vh;
 
-    width: 100vw;
-    height: 100vh;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 }
 
 .aboutContainer > .split {
-    width: 50vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 0 4rem 0 4rem;
-    background-color: var(--light);
+	width: 50vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	padding: 0 4rem 0 4rem;
+	background-color: var(--light);
 
-    /* background-position-x: right;
+	/* background-position-x: right;
     background-size: contain;
     background-attachment: fixed; */
-
 }
 
-
 .aboutContainer > .split.left {
-
-    align-items: center;
-    /* height: calc(100vh - 16rem); */
-    /* border: 8rem solid var(--light); */
-    /* outline-; */
+	align-items: center;
+	/* height: calc(100vh - 16rem); */
+	/* border: 8rem solid var(--light); */
+	/* outline-; */
 }
 
 .aboutContainer > .split.left > img {
-
-    width: 30vw;
-    height: clamp(50vw auto 90vh);
+	width: 30vw;
+	height: clamp(50vw auto 90vh);
 }
 
-
 .aboutInformation * {
-    padding: 8px;
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
+	padding: 8px;
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
 }
 
 .aboutInformation > h3 {
-    border-color: var(--orange);
+	border-color: var(--orange);
 }
 
 .aboutContainer > .split.right {
-    padding-left: 0px;
+	padding-left: 0px;
 }

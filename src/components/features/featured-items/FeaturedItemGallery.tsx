@@ -4,10 +4,8 @@ import ImageGallery from "react-image-gallery";
 
 import { getImageUrl } from "../../../util/getImageUrl";
 
-
-
 // @ts-ignore
-import  "./FeaturedItem.css";
+import "./FeaturedItem.css";
 import { FeaturedItem } from "./FeaturedItem";
 
 const featuredItemImageQuery = graphql`
@@ -19,6 +17,11 @@ const featuredItemImageQuery = graphql`
 					preview {
 						url
 						alternativeText
+						formats {
+							large {
+								url
+							}
+						}
 					}
 					description
 					title
@@ -45,7 +48,6 @@ interface FeaturedItem {
  * will default to filling the screen
  */
 const FeaturedItemGallery: React.FC<FeaturedItemGalleryProps> = ({}) => {
-
 	const featuredItems: Array<FeaturedItem> = useStaticQuery(
 		featuredItemImageQuery
 	).allStrapiCategory.nodes[0].menu_items.map((menuItem: any) => {
@@ -54,7 +56,7 @@ const FeaturedItemGallery: React.FC<FeaturedItemGalleryProps> = ({}) => {
 			title: menuItem.title,
 			descr: menuItem.description,
 			preview: {
-				original: getImageUrl(menuItem.preview[0].url)
+				original: getImageUrl(menuItem.preview.formats.large.url),
 			},
 		};
 	});
@@ -76,7 +78,7 @@ const FeaturedItemGallery: React.FC<FeaturedItemGalleryProps> = ({}) => {
 	// }, [])
 
 	return (
-		<div className='FeaturedItemGalleryContainer'>
+		<div className="FeaturedItemGalleryContainer">
 			<ImageGallery
 				items={featuredItems.map((i) => {
 					return i.preview;
@@ -84,20 +86,23 @@ const FeaturedItemGallery: React.FC<FeaturedItemGalleryProps> = ({}) => {
 				onBeforeSlide={updateActiveItem}
 				showThumbnails={false}
 				showFullscreenButton={false}
-                showPlayButton={false}
-                infinite={true}
+				showPlayButton={false}
+				infinite={true}
 				// showNav={false}
-                autoPlay={true}
+				autoPlay={true}
 				slideInterval={5000}
-				additionalClass='featuredItemGallery'
-                renderItem={(i) => {
-                    return (
-						<FeaturedItem slug={slug} imgSrc={i.original} title={title} descr={descr}></FeaturedItem>
-                    );
-                }}
-			>
-            </ImageGallery>
-
+				additionalClass="featuredItemGallery"
+				renderItem={(i) => {
+					return (
+						<FeaturedItem
+							slug={slug}
+							imgSrc={i.original}
+							title={title}
+							descr={descr}
+						></FeaturedItem>
+					);
+				}}
+			></ImageGallery>
 		</div>
 	);
 };
