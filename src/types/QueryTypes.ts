@@ -1,10 +1,16 @@
 interface Menu {
-	id: string;
+	id: number;
 	title: string;
 	description: string;
 	menu_items: Array<MenuItem>;
 	preview: Preview;
 	slug?: string;
+}
+
+interface CategoryMenu extends Menu {
+	categories: {
+		[index: string]: Array<MenuItem>;
+	};
 }
 
 type Preview = {
@@ -14,6 +20,8 @@ type Preview = {
 		small?: ImageFormat;
 		thumbnail?: ImageFormat;
 	};
+	width: number;
+	height: number;
 	alternativeText: string;
 	url?: string;
 };
@@ -21,21 +29,24 @@ type Preview = {
 type ImageFormat = {
 	url: string;
 	size: number;
+	width: number;
+	height: number;
 };
 
 interface MenuItem {
-	id: string;
+	id: number;
 	preview: Preview;
 	description: string;
 	title: string;
+	price: number;
 }
 
 interface Section {
-	id: string;
+	id: number;
 	preview: Preview;
 	title: string;
 	subtitle: string;
 	description: string;
 }
 
-export type { Menu, Preview, ImageFormat, MenuItem, Section };
+export type { Menu, CategoryMenu, Preview, ImageFormat, MenuItem, Section };

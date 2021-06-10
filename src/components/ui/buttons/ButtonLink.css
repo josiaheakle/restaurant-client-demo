@@ -10,6 +10,11 @@
 	width: fit-content;
 }
 
+.ButtonLink.large {
+	padding: 1rem 1.5rem 1rem 1.5rem;
+	font-size: 1.5rem;
+}
+
 .ButtonLink:hover {
 	opacity: 80%;
 	text-decoration: underline;

@@ -5,21 +5,38 @@ import { ButtonLink } from "../../ui/buttons/ButtonLink";
 import { FoodMenuItem } from "./FoodMenuItem";
 
 import "./FoodMenu.css";
-import { Menu } from "../../../types/QueryTypes";
+import { Menu, CategoryMenu } from "../../../types/QueryTypes";
 
 interface FoodMenuCardProps {
-	menu: Menu;
+	menu: CategoryMenu;
 }
 
 const FoodMenuCard: React.FC<FoodMenuCardProps> = ({ menu }) => {
+	console.log({ menu });
 	return (
 		<div className="FoodMenuCard">
-			<h3>{menu.title}</h3>
+			<span className="FoodMenuCardHeader">
+				<h3>{menu.title}</h3>
+				{menu.description}
+			</span>
 
-			<span>{menu.description}</span>
-			{menu.menu_items.map((item, index) => {
-				return <FoodMenuItem key={index} menuItem={item}></FoodMenuItem>;
+			{Object.keys(menu.categories).map((key, index) => {
+				const items = Object.values(
+					menu.menu_items.map((item, i) => {
+						return <FoodMenuItem key={i} menuItem={item}></FoodMenuItem>;
+					})
+				);
+				return (
+					<div className="MenuCategory">
+						<h4 key={index}>{key}</h4>
+						{items}
+					</div>
+				);
 			})}
+
+			{/* {menu.menu_items.map((item, index) => {
+				return <FoodMenuItem key={index} menuItem={item}></FoodMenuItem>;
+			})} */}
 		</div>
 	);
 };

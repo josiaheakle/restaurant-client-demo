@@ -9,6 +9,14 @@ import { ButtonLink } from "../../ui/buttons/ButtonLink";
 // util
 import { getImageUrl, getBestImage } from "../../../util/getImageUrl";
 
+// types
+import {
+	CategoryMenu,
+	Menu,
+	MenuItem,
+	Section,
+} from "../../../types/QueryTypes";
+
 // css
 import "./FoodMenu.css";
 
@@ -24,23 +32,33 @@ const query = graphql`
 						medium {
 							url
 							size
+							width
+							height
 						}
 						large {
 							size
 							url
+							width
+							height
 						}
 						small {
 							url
 							size
+							width
+							height
 						}
 						thumbnail {
 							size
 							url
+							width
+							height
 						}
 					}
 					url
 					alternativeText
 					size
+					height
+					width
 				}
 				description
 				slug
@@ -51,26 +69,37 @@ const query = graphql`
 							thumbnail {
 								url
 								size
+								height
+								width
 							}
 							small {
 								url
 								size
-							}
-							medium {
-								url
-								size
+								width
+								height
 							}
 							large {
 								url
 								size
+								width
+								height
+							}
+							medium {
+								url
+								size
+								width
+								height
 							}
 						}
 						url
 						size
 						alternativeText
+						height
+						width
 					}
 					description
 					title
+					price
 				}
 				id
 			}
@@ -83,21 +112,31 @@ const query = graphql`
 						thumbnail {
 							url
 							size
+							height
+							width
 						}
 						small {
 							url
 							size
+							height
+							width
 						}
 						medium {
 							url
 							size
+							height
+							width
 						}
 						large {
 							url
 							size
+							height
+							width
 						}
 					}
 					url
+					height
+					width
 					size
 					alternativeText
 				}
@@ -106,17 +145,64 @@ const query = graphql`
 				description
 			}
 		}
+		allStrapiCategory {
+			nodes {
+				menu_items {
+					id
+				}
+				title
+			}
+		}
 	}
 `;
 
-import { Menu, Section } from "../../../types/QueryTypes";
+interface Category {
+	menu_items: Array<{ id: number }>;
+	title: string;
+}
 
 const FoodMenu: React.FC<FoodMenuProps> = ({}) => {
+	// query result
 	const data = useStaticQuery(query);
-	const menus: Array<Menu> = data.allStrapiMenu.nodes;
+
+	// Menus
+	const menus: Array<CategoryMenu> = data.allStrapiMenu.nodes;
+
+	// Menu Item categories
+	const categories: Array<Category> = data.allStrapiCategory.nodes;
+
+	// Page Section Data
 	const section: Section = data.allStrapiSection.nodes[0];
 
+	const getItemCategory = (itemId: number): string => {
+		const cat = categories.find((category) => {
+			const item = category.menu_items.find((item) => item.id === itemId);
+			console.log({ category, item });
+			if (item !== undefined) return true;
+			else return false;
+		});
+		return cat?.title || "";
+	};
+
+	const getMenuCategories = () => {
+		const categories: { [index: string]: Array<MenuItem> } = {};
+		menus.forEach((menu) => {
+			menu.menu_items.forEach((item) => {
+				const category = getItemCategory(item.id);
+				if (!categories[category]) categories[category] = [];
+				categories[category].push(item);
+			});
+			menu.categories = categories;
+		});
+	};
+
 	const [activeMenu, setActiveMenu] = React.useState(0);
+
+	React.useEffect(() => {
+		getMenuCategories();
+	}, []);
+
+	console.log(getMenuCategories());
 
 	return (
 		<div
@@ -140,6 +226,7 @@ const FoodMenu: React.FC<FoodMenuProps> = ({}) => {
 							onClick={() => {
 								setActiveMenu(i);
 							}}
+							large={true}
 						></ButtonLink>
 					))}
 				</div>

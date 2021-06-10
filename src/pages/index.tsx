@@ -3,7 +3,7 @@ import * as React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 
 //@ts-ignore
-import brandIcon from "../images/chefs-hat.png";
+import brandIcon from "../assets/chefs-hat.png";
 
 // components
 import { MainLayout } from "../components/layouts/MainLayout";
@@ -14,7 +14,7 @@ import { Location } from "../components/features/location/Location";
 import { FoodMenu } from "../components/features/food-menu/FoodMenu";
 
 // css
-import "../styles/root.css";
+import "../components/root.css";
 
 const pages = [
 	{
