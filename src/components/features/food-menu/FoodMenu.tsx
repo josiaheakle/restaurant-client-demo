@@ -209,7 +209,9 @@ const FoodMenu: React.FC<FoodMenuProps> = ({}) => {
 			id="menu"
 			className="FoodMenu"
 			style={{
-				backgroundImage: `url(${getImageUrl(getBestImage(section.preview))})`,
+				backgroundImage: `url(${getImageUrl(
+					getBestImage(section.preview[0])
+				)})`,
 			}}
 		>
 			<div className="FoodMenuHeader">

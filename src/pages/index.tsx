@@ -40,8 +40,8 @@ const IndexPage: React.FunctionComponent = () => {
 		// <Background backgroundImg={bgImg}>
 		<MainLayout
 			pages={pages}
-			title="Bob's Bistreaux"
-			subtitle="on the beach with the burgers"
+			title="Your Restaurant"
+			subtitle="professionally designed for the web"
 			brandIcon={{ src: brandIcon, alt: "" }}
 		>
 			{/* home -> featured item images */}
@@ -55,8 +55,6 @@ const IndexPage: React.FunctionComponent = () => {
 			<FoodMenu></FoodMenu>
 
 			<Location></Location>
-
-			{/* location -> google map */}
 		</MainLayout>
 		// </Background>
 	);

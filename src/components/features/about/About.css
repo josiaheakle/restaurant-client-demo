@@ -45,6 +45,10 @@
 	border-color: var(--orange);
 }
 
+.aboutInformation > p {
+	margin-right: 10rem;
+}
+
 .aboutContainer > .split.right {
 	padding-left: 0px;
 }

@@ -1,25 +1,41 @@
-import * as React from 'react';
-import {ButtonLink} from '../../ui/buttons/ButtonLink';
+import * as React from "react";
+import { ButtonLink } from "../../ui/buttons/ButtonLink";
 
 interface FeaturedItemProps {
-    slug: string;
-    imgSrc: string;
-    title: string;
-    descr: string;
-
+	slug: string;
+	imgSrc: string;
+	title: string;
+	descr: string;
+	link?: string;
+	isSliding?: boolean;
 }
 
-const FeaturedItem: React.FC<FeaturedItemProps> = ({imgSrc, title, descr, slug}) => {
-    return (
-        <div id='home' className='featuredItem' style={{backgroundImage:`url(${imgSrc})`}}>
-        <div className='featuredItemInfo'>
-            <div>
-                <h3>{title}</h3>
-                <p>{descr}</p>
-                <ButtonLink link={`/menu-item/${slug}`} title={'view'}></ButtonLink>
-            </div>
-        </div>
-    </div>    );
-}
+const FeaturedItem: React.FC<FeaturedItemProps> = ({
+	imgSrc,
+	title,
+	descr,
+	slug,
+	link,
+	isSliding,
+}) => {
+	return (
+		<div
+			id="home"
+			className="featuredItem"
+			style={{ backgroundImage: `url(${imgSrc})` }}
+		>
+			<div className={`featuredItemInfo ${isSliding ? "hidden" : ""}`}>
+				<div>
+					<h3>{title}</h3>
+					<p>{descr}</p>
+					<ButtonLink
+						link={link ? link : `/menu-item/${slug}`}
+						title={"view"}
+					></ButtonLink>
+				</div>
+			</div>
+		</div>
+	);
+};
 
-export {FeaturedItem};
+export { FeaturedItem };

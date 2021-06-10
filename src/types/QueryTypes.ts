@@ -23,7 +23,7 @@ type Preview = {
 	width: number;
 	height: number;
 	alternativeText: string;
-	url?: string;
+	url: string;
 };
 
 type ImageFormat = {
@@ -43,7 +43,7 @@ interface MenuItem {
 
 interface Section {
 	id: number;
-	preview: Preview;
+	preview: Array<Preview>;
 	title: string;
 	subtitle: string;
 	description: string;

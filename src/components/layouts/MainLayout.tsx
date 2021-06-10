@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 
 import { Header } from "./header/Header";
+import { Footer } from "./footer/Footer";
 
 interface MainLayoutProps {
 	title: string;
@@ -50,6 +51,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
 				<Header title={title} subtitle={subtitle} pages={pages} />
 			)}
 			{children}
+			<Footer></Footer>
 		</>
 	);
 };
