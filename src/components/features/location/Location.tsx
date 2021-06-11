@@ -44,11 +44,7 @@ const Location: React.FC<LocationProps> = ({}) => {
 						zoom={13}
 						scrollWheelZoom={true}
 						id="map"
-						style={{
-							height: "50vh",
-							width: "50vw",
-							zIndex: 1,
-						}}
+						className="LocationMap"
 					>
 						<TileLayer
 							attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

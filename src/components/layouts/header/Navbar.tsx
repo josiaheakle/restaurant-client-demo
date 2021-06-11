@@ -62,11 +62,11 @@ export const Navbar: React.FC<NavbarProps> = ({ links, isMobile, setOpen }) => {
 						onClick={() => {
 							setIsOpen(true);
 						}}
-						className="mobile-navbar-icon"
+						className={`mobile-navbar-icon ${isOpen ? "open" : ""}`}
 					>
-						<div></div>
-						<div></div>
-						<div></div>
+						<div className="top"></div>
+						<div className="middle"></div>
+						<div className="bottom"></div>
 					</div>
 				</div>
 			) : (

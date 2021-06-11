@@ -15,9 +15,12 @@ const FoodMenuCard: React.FC<FoodMenuCardProps> = ({ menu }) => {
 	console.log({ menu });
 	return (
 		<div className="FoodMenuCard">
-			<span className="FoodMenuCardHeader">
-				<h3>{menu.title}</h3>
-				{menu.description}
+			<span className="FoodMenuCardHeaderContainer">
+				<div className="nav-placeholder"></div>
+				<div className="FoodMenuCardHeader">
+					<h3>{menu.title}</h3>
+					<p>{menu.description}</p>
+				</div>
 			</span>
 
 			{Object.keys(menu.categories).map((key, index) => {

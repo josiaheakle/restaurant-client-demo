@@ -19,6 +19,7 @@ import {
 
 // css
 import "./FoodMenu.css";
+import { useIsMobile } from "../../../util/hooks";
 
 interface FoodMenuProps {}
 
@@ -197,6 +198,7 @@ const FoodMenu: React.FC<FoodMenuProps> = ({}) => {
 	};
 
 	const [activeMenu, setActiveMenu] = React.useState(0);
+	const isMobile = useIsMobile();
 
 	React.useEffect(() => {
 		getMenuCategories();
@@ -214,16 +216,21 @@ const FoodMenu: React.FC<FoodMenuProps> = ({}) => {
 				)})`,
 			}}
 		>
-			<div className="FoodMenuHeader">
-				<h2>{section.title}</h2>
-			</div>
+			{!isMobile ? (
+				<div className="FoodMenuHeader">
+					<h2>{section.title}</h2>
+				</div>
+			) : null}
 
 			<div className="FoodMenuContainer">
+				{isMobile ? <h2>{section.title}</h2> : null}
 				<div className="FoodMenuNavbar">
 					{menus.map((menu, i) => (
 						<button
 							key={i}
-							className={`FoodMenuTab ${activeMenu === i ? "selected" : ""}`}
+							className={`FoodMenuTab ribbon ${
+								activeMenu === i ? "selected" : ""
+							}`}
 							onClick={() => setActiveMenu(i)}
 						>
 							{menu.title}

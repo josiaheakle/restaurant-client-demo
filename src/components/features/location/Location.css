@@ -28,6 +28,12 @@
 	align-items: center;
 }
 
+.LocationMap {
+	height: 50vh;
+	width: 50vw;
+	z-index: 1;
+}
+
 /* 
 address {
 	display: flex;
@@ -41,4 +47,24 @@ address {
 .my-link-container.address {
 	display: flex;
 	flex-direction: column;
+}
+
+@media only screen and (max-width: 1023px) {
+	.LocationMap {
+		position: relative;
+		width: 100vw;
+		height: 30vw;
+		bottom: 0;
+	}
+
+	.LocationContainer {
+		height: 100%;
+
+		flex-direction: column-reverse;
+		justify-content: space-between;
+	}
+
+	.LocationInformation {
+		max-width: 80vw;
+	}
 }
