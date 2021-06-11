@@ -28,10 +28,20 @@ const FeaturedItem: React.FC<FeaturedItemProps> = ({
 				<div>
 					<h3>{title}</h3>
 					<p>{descr}</p>
-					<ButtonLink
-						link={link ? link : `/menu-item/${slug}`}
-						title={"view"}
-					></ButtonLink>
+					<span>
+						<ButtonLink
+							link={link ? link : ``}
+							title={"read more"}
+						></ButtonLink>
+						<ButtonLink
+							onClick={() => {
+								document
+									.getElementById("location")
+									?.scrollIntoView({ behavior: "smooth" });
+							}}
+							title={"contact me"}
+						></ButtonLink>
+					</span>
 				</div>
 			</div>
 		</div>

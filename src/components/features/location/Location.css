@@ -21,14 +21,22 @@
 	max-width: 30vw;
 }
 
+.LocationInformation > div {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* 
 address {
 	display: flex;
 	flex-direction: row;
 	margin-top: 2rem;
-	/* align-items: center; */
+	align-items: center;
 	justify-content: space-between;
 	padding-right: 5rem;
-}
+} */
 
 .my-link-container.address {
 	display: flex;

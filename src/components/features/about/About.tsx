@@ -1,7 +1,8 @@
 import { graphql, StaticQuery } from "gatsby";
 import * as React from "react";
 import { Section } from "../../../types/QueryTypes";
-import { getImageUrl } from "../../../util/getImageUrl";
+import { ImageHandler } from "../../../util/getImageUrl";
+import { useIsMobile } from "../../../util/hooks";
 
 import "./About.css";
 
@@ -26,6 +27,7 @@ const sectionQuery = graphql`
 `;
 
 const About: React.FC<AboutProps> = ({}) => {
+	const isMobile = useIsMobile();
 	return (
 		<StaticQuery
 			query={sectionQuery}
@@ -34,25 +36,61 @@ const About: React.FC<AboutProps> = ({}) => {
 				console.log(data);
 				return (
 					<div className="aboutContainer" id="about">
-						<div
-							className="split left"
-							style={
-								{
-									// backgroundImage: `url(${getImageUrl(info.preview.url)})`
-								}
-							}
-						>
-							<img
-								src={getImageUrl(info.preview[0].url)}
-								alt={info.preview[0].alternativeText}
-							/>
-						</div>
-						<div className="split right aboutInformation">
-							{/* <h5>{info.subtitle}</h5> */}
-							<h5>gain control of your brand image</h5>
-							<h3>Introduce Yourself</h3>
-							<p>{info.description}</p>
-						</div>
+						{isMobile ? (
+							<>
+								<div className="about-mobile">
+									<div className="about-mobile-header">
+										<img
+											src={ImageHandler.getBestImageUrl(info.preview[0])}
+											alt={info.preview[0].alternativeText}
+										/>
+										<span>
+											<h5>introduce yourself</h5>
+											<h3>Gain Control of Your Image</h3>
+										</span>
+									</div>
+									<p>
+										Establishing an online presence gives you control of first
+										impressions. With more than 75% of diners visiting a
+										restaurant's website before deciding, fostering a elegant
+										first impression is key. Access to powerful content
+										managment tools, you can easily manage your menu. Seach
+										engine opimization will make your website one of the first
+										results on Google.
+									</p>
+								</div>
+							</>
+						) : (
+							<>
+								<div
+									className="about-split left"
+									style={
+										{
+											// backgroundImage: `url(${getImageUrl(info.preview.url)})`
+										}
+									}
+								>
+									<img
+										src={ImageHandler.getBestImageUrl(info.preview[0])}
+										alt={info.preview[0].alternativeText}
+									/>
+								</div>
+								<div className="about-split right aboutInformation">
+									{/* <h5>{info.subtitle}</h5> */}
+									<h5>introduce yourself</h5>
+									<h3>Gain Control of Your Image</h3>
+									<p>
+										Establishing an online presence gives you control of first
+										impressions. With more than 75% of diners visiting a
+										restaurant's website before deciding, fostering a elegant
+										first impression is key. Access to powerful content
+										managment tools, you can easily manage your menu. Seach
+										engine opimization will make your website one of the first
+										results on Google.
+									</p>
+								</div>
+							</>
+						)}
 					</div>
 				);
 			}}

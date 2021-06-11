@@ -1,28 +1,28 @@
 import { getImage } from "gatsby-plugin-image";
 import { ImageFormat, Preview } from "../types/QueryTypes";
 
-const getImageUrl = (imageName: string): string => {
-	return `${process.env.GATSBY_API_URL}${imageName}`;
-};
+// const getImageUrl = (imageName: string): string => {
+// 	return `${process.env.GATSBY_API_URL}${imageName}`;
+// };
 
-const getBestImage = (preview: Preview): string => {
-	return (
-		preview.formats.large?.url ||
-		preview.formats.medium?.url ||
-		preview.formats.small?.url ||
-		preview.formats.thumbnail?.url ||
-		preview.url ||
-		""
-	);
-};
+// const getBestImage = (preview: Preview): string => {
+// 	return (
+// 		preview.formats.large?.url ||
+// 		preview.formats.medium?.url ||
+// 		preview.formats.small?.url ||
+// 		preview.formats.thumbnail?.url ||
+// 		preview.url ||
+// 		""
+// 	);
+// };
 
 class ImageHandler {
 	static getThumbnail(image: Preview): string {
-		return getImageUrl(image.formats.thumbnail?.url || "");
+		return this.getImageUrl(image.formats.thumbnail?.url || "");
 	}
 
 	static getBestImageUrl(image: Preview): string {
-		return getImageUrl(getBestImage(image));
+		return this.getImageUrl(this.getBestImage(image));
 	}
 
 	static getImageUrl(imageName: string): string {
@@ -30,12 +30,14 @@ class ImageHandler {
 	}
 
 	static getBestImage(image: Preview): string {
+		console.log(`get best image called`);
+		console.log(image);
 		return (
+			image.url ||
 			image.formats.large?.url ||
 			image.formats.medium?.url ||
 			image.formats.small?.url ||
 			image.formats.thumbnail?.url ||
-			image.url ||
 			""
 		);
 	}
@@ -57,4 +59,4 @@ class ImageHandler {
 	}
 }
 
-export { getImageUrl, getBestImage, ImageHandler };
+export { ImageHandler };

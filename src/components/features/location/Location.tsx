@@ -36,11 +36,11 @@ const Location: React.FC<LocationProps> = ({}) => {
 
 	return (
 		<div id="location" className="Location">
-			<h1>Find Us</h1>
+			<h2>Get Noticed</h2>
 			<div className="LocationContainer">
 				{typeof window !== "undefined" ? (
 					<MapContainer
-						center={[51.505, -0.09]}
+						center={[35.960636, -83.920738]}
 						zoom={13}
 						scrollWheelZoom={true}
 						id="map"
@@ -54,48 +54,59 @@ const Location: React.FC<LocationProps> = ({}) => {
 							attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 							url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 						/>
-						<Marker position={[51.505, -0.09]}>
+						<Marker position={[35.960636, -83.920738]}>
 							<Popup>Your restaurant here!</Popup>
 						</Marker>
 					</MapContainer>
 				) : null}
 				<div className="LocationInformation">
-					<h3>Come dine with us!</h3>
-					<address>
-						Located at:
-						<a
-							href="https://www.google.com/maps/search/?api=1&query=mcdonalds"
-							className="address-container"
-						>
-							123 Happy St <br />
+					<h4>Ready to establish an online presence?</h4>
+					<h5>I would love to help!</h5>
+					With over a year of experience developing web applications, I am
+					excited to design, develop and deploy the perfect custom website for
+					your restaurant.
+					<br />
+					<div>
+						<address>
+							123 Your Address St <br />
 							City, ST 12345
 							<br /> USA
-						</a>
-						Call us:
-						<span className="address-container">+1 (123) 555-1234</span>
-					</address>
+							<br />
+							<br />
+							<a
+								href="mailto:dev@josiaheakle.com"
+								className="address-container"
+							>
+								Send me an Email
+							</a>
+							<br />
+							or
+						</address>
+						<span className="my-link-container address">
+							<a className="my-link" href="https://josiaheakle.com">
+								<img
+									title="My Personal Website"
+									className="link-icon"
+									src={myIcon}
+								></img>
+							</a>
+							<a className="my-link" href="https://github.com/josiaheakle">
+								<img title="My Code" className="link-icon" src={ghIcon}></img>
+							</a>
 
-					<br />
-					<br />
-					<span className="my-link-container">
-						<a className="my-link" href="https://github.com/josiaheakle">
-							<img className="link-icon" src={ghIcon}></img>
-						</a>
-						<a
-							className="my-link"
-							href="https://www.linkedin.com/in/josiah-eakle-10a7a6204/"
-						>
-							<img className="link-icon" src={liIcon}></img>
-						</a>
-
-						<a
-							className="my-link"
-							href="https://twitter.com/JosiahEakle"
-							title="Twitter"
-						>
-							<img className="link-icon" src={twIcon} alt="Twitter Icon"></img>
-						</a>
-					</span>
+							<a
+								className="my-link"
+								href="https://twitter.com/JosiahEakle"
+								title="Twitter"
+							>
+								<img
+									className="link-icon"
+									src={twIcon}
+									alt="Twitter Icon"
+								></img>
+							</a>
+						</span>
+					</div>
 				</div>
 			</div>
 		</div>

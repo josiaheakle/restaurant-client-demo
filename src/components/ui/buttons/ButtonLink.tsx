@@ -7,7 +7,7 @@ interface ButtonProps {
 	title: string;
 	link?: string;
 	large?: boolean;
-	onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+	onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 	selected?: boolean;
 }
 
@@ -28,13 +28,13 @@ export const ButtonLink: React.FC<ButtonProps> = ({
 			{title}
 		</Link>
 	) : onClick ? (
-		<button
+		<a
 			className={`ButtonLink ${large ? "large" : ""} ${
 				selected ? "selected" : ""
 			}`}
 			onClick={onClick}
 		>
 			{title}
-		</button>
+		</a>
 	) : null;
 };

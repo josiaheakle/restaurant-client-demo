@@ -9,6 +9,11 @@
 	justify-content: space-evenly;
 }
 
+.Footer > span {
+	max-width: 80vw;
+	text-align: center;
+}
+
 .my-icon {
 	width: 64px;
 }

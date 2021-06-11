@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar } from "./Navbar";
 
 import "./Header.css";
+import { useIsMobile, useWindowSize } from "../../../util/hooks";
 
 interface HeaderProps {
 	title?: string;
@@ -25,21 +26,21 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
 	console.log({ pages, title, subtitle, icon });
 	const [isSmall, setIsSmall] = React.useState(true);
+	const isMobile = useIsMobile();
 
 	const checkScroll = () => {
 		if (window.scrollY > 100) {
 			setIsSmall(true);
 		} else setIsSmall(false);
 	};
-	const handleScroll = () => {
-		window.addEventListener("scroll", () => {
-			checkScroll();
-		});
-	};
 
 	React.useEffect(() => {
 		checkScroll();
-		handleScroll();
+	}, []);
+
+	React.useLayoutEffect(() => {
+		window.addEventListener("scroll", checkScroll);
+		return () => window.removeEventListener("scroll", checkScroll);
 	}, []);
 
 	return (
@@ -59,7 +60,7 @@ export const Header: React.FC<HeaderProps> = ({
 			</a>
 			{pages ? (
 				<nav>
-					<Navbar links={pages} />
+					<Navbar isMobile={isMobile} links={pages} />
 				</nav>
 			) : null}
 		</header>

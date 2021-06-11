@@ -27,7 +27,7 @@ const FoodMenuCard: React.FC<FoodMenuCardProps> = ({ menu }) => {
 					})
 				);
 				return (
-					<div className="MenuCategory">
+					<div key={index} className="MenuCategory">
 						<h4 key={index}>{key}</h4>
 						{items}
 					</div>

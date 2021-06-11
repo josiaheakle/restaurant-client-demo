@@ -1,6 +1,7 @@
 .aboutContainer {
 	width: 100vw;
 	height: 100vh;
+	background-color: var(--light);
 
 	display: flex;
 	flex-direction: row;
@@ -8,7 +9,7 @@
 	justify-content: center;
 }
 
-.aboutContainer > .split {
+.about-split {
 	width: 50vw;
 	height: 100vh;
 	display: flex;
@@ -23,14 +24,14 @@
     background-attachment: fixed; */
 }
 
-.aboutContainer > .split.left {
+.about-split.left {
 	align-items: center;
 	/* height: calc(100vh - 16rem); */
 	/* border: 8rem solid var(--light); */
 	/* outline-; */
 }
 
-.aboutContainer > .split.left > img {
+.about-split.left > img {
 	width: 30vw;
 	height: clamp(50vw auto 90vh);
 }
@@ -49,6 +50,40 @@
 	margin-right: 10rem;
 }
 
-.aboutContainer > .split.right {
+.about-split.right {
 	padding-left: 0px;
+}
+
+.about-mobile {
+	padding: 10vw;
+}
+
+.about-mobile-header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+	margin-bottom: 2rem;
+}
+
+.about-mobile-header > span > * {
+	padding: 8px;
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+.about-mobile-header > span > h3 {
+	border-color: var(--orange);
+}
+
+.about-mobile-header > span {
+	max-width: 40vw;
+}
+
+.about-mobile-header > img {
+	width: 30vw;
+	height: clamp(50vw auto 90vh);
+}
+
+@media only screen and (max-width: 1023px) {
 }

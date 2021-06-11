@@ -7,7 +7,7 @@ import { FoodMenuCard } from "./FoodMenuCard";
 import { ButtonLink } from "../../ui/buttons/ButtonLink";
 
 // util
-import { getImageUrl, getBestImage } from "../../../util/getImageUrl";
+import { ImageHandler } from "../../../util/getImageUrl";
 
 // types
 import {
@@ -209,27 +209,25 @@ const FoodMenu: React.FC<FoodMenuProps> = ({}) => {
 			id="menu"
 			className="FoodMenu"
 			style={{
-				backgroundImage: `url(${getImageUrl(
-					getBestImage(section.preview[0])
+				backgroundImage: `url(${ImageHandler.getBestImageUrl(
+					section.preview[0]
 				)})`,
 			}}
 		>
 			<div className="FoodMenuHeader">
-				<h1>{section.title}</h1>
+				<h2>{section.title}</h2>
 			</div>
 
 			<div className="FoodMenuContainer">
 				<div className="FoodMenuNavbar">
 					{menus.map((menu, i) => (
-						<ButtonLink
+						<button
 							key={i}
-							selected={activeMenu === i ? true : false}
-							title={menu.title}
-							onClick={() => {
-								setActiveMenu(i);
-							}}
-							large={true}
-						></ButtonLink>
+							className={`FoodMenuTab ${activeMenu === i ? "selected" : ""}`}
+							onClick={() => setActiveMenu(i)}
+						>
+							{menu.title}
+						</button>
 					))}
 				</div>
 				<FoodMenuCard menu={menus[activeMenu]} />

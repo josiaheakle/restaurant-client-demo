@@ -3,6 +3,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
 /* @import url("https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"); */
 
+/*
+
+break points
+
+1920×1080
+1366×768
+1024
+
+
+
+360×640
+414×896
+1536×864
+375×667
+
+*/
+
 :root {
 	--seal-brown: #542b15ff;
 	--citron: #94950cff;
@@ -28,6 +45,12 @@
 	--dark-green: var(--lincoln-green);
 	--light: var(--alice-blue);
 	--blue: var(--han-blue);
+
+	--bp-mobile-max: 1023px;
+}
+
+html {
+	overflow-x: hidden;
 }
 
 body {
@@ -46,35 +69,71 @@ h6 {
 	font-family: "Montserrat", sans-serif;
 }
 
+p {
+	line-height: 1.75em;
+}
+
 p,
 span,
 div {
 	font-family: "Courier New";
-	line-height: 1.75em;
 }
 
 h1 {
 	margin-top: 0;
-	font-size: 4.209rem;
+	font-size: clamp(2rem, 4.209rem, 4vw);
 }
 
 h2 {
-	font-size: 3.157rem;
+	font-size: clamp(1.8rem, 3.157rem, 3vw);
+
+	/* font-size: 3.157rem; */
 }
 
 h3 {
-	font-size: 2.369rem;
+	font-size: clamp(1.5rem, 2.369rem, 2.5vw);
 }
 
 h4 {
-	font-size: 1.777rem;
+	font-size: clamp(1.2rem, 1.777rem, 2vw);
+	/* font-size: 1.777rem; */
 }
 
 h5 {
-	font-size: 1.333rem;
+	font-size: clamp(1rem, 1.333rem, 1.5vw);
+
+	/* font-size: 1.333rem; */
+}
+
+p {
+	font-size: clamp(0.9em, 1rem, 1vw);
 }
 
 small,
 .text_small {
 	font-size: 0.75rem;
+}
+
+@media only screen and (max-width: 1023px) {
+	/* h1 {
+		font-size: 2rem;
+	}
+	h2 {
+		font-size: 1.5rem;
+	}
+	h3 {
+		font-size: 1.3rem;
+	}
+	h4 {
+		font-size: 1rem;
+	}
+
+	h5 {
+		font-size: 0.8rem;
+	}
+
+	p {
+		font-size: 0.8em;
+		line-height: 1.2em;
+	} */
 }

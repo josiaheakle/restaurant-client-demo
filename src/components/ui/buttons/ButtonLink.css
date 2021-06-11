@@ -8,6 +8,7 @@
 	text-decoration: none;
 	color: black;
 	width: fit-content;
+	margin-right: 1rem;
 }
 
 .ButtonLink.large {
@@ -22,4 +23,17 @@
 
 .ButtonLink.selected {
 	background-color: var(--orange);
+}
+
+@media only screen and (max-width: 1023px) {
+	.ButtonLink.large {
+		padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+		font-size: 1rem;
+	}
+	.ButtonLink {
+		margin-right: 0.2rem;
+
+		padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+		font-size: 0.8em;
+	}
 }
