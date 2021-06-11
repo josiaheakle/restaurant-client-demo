@@ -47,7 +47,7 @@ const Location: React.FC<LocationProps> = ({}) => {
 						style={{
 							height: "50vh",
 							width: "50vw",
-							zIndex: 100,
+							zIndex: 1,
 						}}
 					>
 						<TileLayer

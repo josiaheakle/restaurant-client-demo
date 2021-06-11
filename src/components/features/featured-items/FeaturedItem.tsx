@@ -2,7 +2,6 @@ import * as React from "react";
 import { ButtonLink } from "../../ui/buttons/ButtonLink";
 
 interface FeaturedItemProps {
-	slug: string;
 	imgSrc: string;
 	title: string;
 	descr: string;
@@ -14,7 +13,6 @@ const FeaturedItem: React.FC<FeaturedItemProps> = ({
 	imgSrc,
 	title,
 	descr,
-	slug,
 	link,
 	isSliding,
 }) => {

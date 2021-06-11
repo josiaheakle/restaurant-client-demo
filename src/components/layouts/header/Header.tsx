@@ -26,6 +26,7 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
 	console.log({ pages, title, subtitle, icon });
 	const [isSmall, setIsSmall] = React.useState(true);
+	const [isOpen, setIsOpen] = React.useState(false);
 	const isMobile = useIsMobile();
 
 	const checkScroll = () => {
@@ -44,7 +45,11 @@ export const Header: React.FC<HeaderProps> = ({
 	}, []);
 
 	return (
-		<header className={`header ${!isSmall ? "large" : ""}`}>
+		<header
+			className={`header ${!isSmall ? "large" : ""} ${
+				isOpen ? "mobile-open" : ""
+			}`}
+		>
 			<a className="header-container" href="/">
 				{icon ? (
 					<img className="header-icon" src={icon.src} alt={icon.alt}></img>
@@ -60,7 +65,7 @@ export const Header: React.FC<HeaderProps> = ({
 			</a>
 			{pages ? (
 				<nav>
-					<Navbar isMobile={isMobile} links={pages} />
+					<Navbar setOpen={setIsOpen} isMobile={isMobile} links={pages} />
 				</nav>
 			) : null}
 		</header>

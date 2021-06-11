@@ -7,9 +7,10 @@ interface NavbarProps {
 		elemId?: string;
 	}>;
 	isMobile?: boolean;
+	setOpen?: (n: boolean) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ links, isMobile }) => {
+export const Navbar: React.FC<NavbarProps> = ({ links, isMobile, setOpen }) => {
 	const [isOpen, setIsOpen] = React.useState(false);
 
 	const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -27,13 +28,20 @@ export const Navbar: React.FC<NavbarProps> = ({ links, isMobile }) => {
 			document.getElementById(elemId)?.scrollIntoView({ behavior: "smooth" });
 		}
 	};
+
+	if (setOpen) {
+		useEffect(() => {
+			setOpen(isOpen);
+		}, [isOpen]);
+	}
+
 	return (
 		<>
 			{isMobile ? (
 				<div>
 					<ul className={`navbar ${isOpen ? "open" : "hidden"}`}>
 						{links.map((link, index) => (
-							<li key={index}>
+							<li className="mobile-nav-link" key={index}>
 								<a
 									onClick={handleClick}
 									key={index}
