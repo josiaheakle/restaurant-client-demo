@@ -56,7 +56,15 @@ export const Header: React.FC<HeaderProps> = ({
 				) : null}
 				{title ? (
 					<span className="header-text-container">
-						<h3 style={{ height: "fit-content" }}>{title}</h3>
+						<h1
+							style={{
+								height: "fit-content",
+								fontSize: "clamp(1.5rem, 2.369rem, 2.5vw)",
+								margin: 0,
+							}}
+						>
+							{title}
+						</h1>
 						{subtitle ? (
 							<h5 className={`${isSmall ? "small" : ""}`}>{subtitle}</h5>
 						) : null}

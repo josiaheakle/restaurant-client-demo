@@ -65,6 +65,25 @@ const FeaturedItemGallery: React.FC<FeaturedItemGalleryProps> = ({}) => {
 	// });
 
 	const featuredItems: Array<FeaturedItem> = [
+		// {
+		// 	preview: {
+		// 		original: featuredImage_2,
+		// 		renderItem: (i) => {
+		// 			return (
+		// 				<FeaturedItem
+		// 					imgSrc={i.original}
+		// 					title={"Your "}
+		// 					descr={
+		// 						"Your website will likely be the first impression a potential guest has of your restaurant. Make it a good one. A website gives you control over the image of your restaurant. It gives a restaurant the platform to tell their own story, in their own words (unlike third party sites). Customers will get a good idea of who you are, as well as get an idea of the overall atmosphere of the restaurant."
+		// 					}
+		// 					link={
+		// 						"https://www.qsrautomations.com/blog/restaurant-management/why-restaurants-need-website/#:~:text=A%20website%20gives%20you%20control,overall%20atmosphere%20of%20the%20restaurant."
+		// 					}
+		// 				></FeaturedItem>
+		// 			);
+		// 		},
+		// 	},
+		// },
 		{
 			preview: {
 				original: featuredImage_2,
@@ -72,7 +91,7 @@ const FeaturedItemGallery: React.FC<FeaturedItemGalleryProps> = ({}) => {
 					return (
 						<FeaturedItem
 							imgSrc={i.original}
-							title={"Your restaurant here"}
+							title={"your restaurant"}
 							descr={
 								"A new survey from MGH found that 77% of diners visit a restaurant's website before they dine in or order out from the establishment. Of that group, nearly 70% have been discouraged from visiting the restaurant because of its website, according to a press release. "
 							}

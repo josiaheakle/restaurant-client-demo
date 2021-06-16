@@ -26,7 +26,12 @@ const FoodMenuCard: React.FC<FoodMenuCardProps> = ({ menu }) => {
 			{Object.keys(menu.categories).map((key, index) => {
 				const items = Object.values(
 					menu.menu_items.map((item, i) => {
-						return <FoodMenuItem key={i} menuItem={item}></FoodMenuItem>;
+						return (
+							<>
+								<FoodMenuItem key={i} menuItem={item}></FoodMenuItem>
+								<br />
+							</>
+						);
 					})
 				);
 				return (
