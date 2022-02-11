@@ -152,6 +152,7 @@ const query = graphql`
 					id
 				}
 				title
+				menu_order
 			}
 		}
 	}
@@ -160,6 +161,7 @@ const query = graphql`
 interface Category {
 	menu_items: Array<{ id: number }>;
 	title: string;
+	menu_order: number;
 }
 
 const FoodMenu: React.FC<FoodMenuProps> = ({}) => {
@@ -175,23 +177,39 @@ const FoodMenu: React.FC<FoodMenuProps> = ({}) => {
 	// Page Section Data
 	const section: Section = data.allStrapiSection.nodes[0];
 
-	const getItemCategory = (itemId: number): string => {
+	const getItemCategory = (
+		itemId: number
+	): {
+		category: string;
+		menu_order: number;
+	} => {
 		const cat = categories.find((category) => {
 			const item = category.menu_items.find((item) => item.id === itemId);
-			console.log({ category, item });
 			if (item !== undefined) return true;
 			else return false;
 		});
-		return cat?.title || "";
+		return {
+			category: cat?.title || "",
+			menu_order: cat?.menu_order || -1,
+		};
 	};
 
 	const getMenuCategories = () => {
-		const categories: { [index: string]: Array<MenuItem> } = {};
+		const categories: {
+			[index: string]: {
+				menu_order: number;
+				menu_items: Array<MenuItem>;
+			};
+		} = {};
 		menus.forEach((menu) => {
 			menu.menu_items.forEach((item) => {
 				const category = getItemCategory(item.id);
-				if (!categories[category]) categories[category] = [];
-				categories[category].push(item);
+				if (!categories[category.category])
+					categories[category.category] = {
+						menu_items: [],
+						menu_order: category.menu_order,
+					};
+				categories[category.category].menu_items.push(item);
 			});
 			menu.categories = categories;
 		});
@@ -203,8 +221,6 @@ const FoodMenu: React.FC<FoodMenuProps> = ({}) => {
 	React.useEffect(() => {
 		getMenuCategories();
 	}, []);
-
-	console.log(getMenuCategories());
 
 	return (
 		<div

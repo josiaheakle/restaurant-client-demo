@@ -1,4 +1,6 @@
 import * as React from "react";
+import { Contact } from "./Contact";
+
 import "./Location.css";
 
 // @ts-ignore
@@ -11,29 +13,41 @@ import ghIcon from "../../../assets/github.svg";
 import liIcon from "../../../assets/linkedInIcon.png";
 
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-
-// import * as L from "leaflet";
-// import "leaflet/dist/leaflet.css";
+import { useIsMobile } from "../../../util/hooks";
 
 interface LocationProps {}
 
-const Location: React.FC<LocationProps> = ({}) => {
-	// const initMap = () => {
-	// 	const map = L.map("map").setView([51.505, -0.09], 13);
-	// 	L.tileLayer(
-	// 		"https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
-	// 		{
-	// 			attribution:
-	// 				'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-	// 			maxZoom: 18,
-	// 			id: "mapbox/streets-v11",
-	// 			tileSize: 512,
-	// 			zoomOffset: -1,
-	// 			accessToken: `${process.env.GATSBY_MAP_KEY}`,
-	// 		}
-	// 	).addTo(map);
-	// };
+/**
+ * 					<form className="contact-form">
+						{isMobile ? (
+							<>
+								<label htmlFor="name-input">Name</label>
+								<input id="name-input" type="text"></input>
+													 <label htmlFor="email-input">Email</label>
+													 <input id="email-input" type="text"></input>
+												 </>
+											 ) : (
+												 <span className="horizontal">
+													 <span>
+														 <label htmlFor="name-input">Name</label>
+														 <input id="name-input" type="text"></input>
+													 </span>
+					 
+													 <span>
+														 <label htmlFor="email-input">Email</label>
+														 <input id="email-input" type="text"></input>
+													 </span>
+												 </span>
+											 )}
+					 
+											 <label htmlFor="message-input">How can I help?</label>
+											 <textarea id="message-input"></textarea>
+										 </form>
+					 
+ */
 
+const Location: React.FC<LocationProps> = ({}) => {
+	const isMobile = useIsMobile();
 	return (
 		<div id="location" className="Location">
 			<h2>Get Noticed</h2>
@@ -55,54 +69,15 @@ const Location: React.FC<LocationProps> = ({}) => {
 						</Marker>
 					</MapContainer>
 				) : null}
-				<div className="LocationInformation">
-					<h4>Ready to establish an online presence?</h4>
-					<h5>I would love to help!</h5>
-					With over a year of experience developing web applications, I am
-					excited to design, develop and deploy the perfect custom website for
-					your restaurant.
-					<br />
-					<div>
-						<address>
-							123 Your Address St <br />
-							City, ST 12345
-							<br /> USA
-							<br />
-							<br />
-							<a
-								href="mailto:dev@josiaheakle.com"
-								className="address-container"
-							>
-								Send me an Email
-							</a>
-							<br />
-							or
-						</address>
-						<span className="my-link-container address">
-							<a className="my-link" href="https://josiaheakle.com">
-								<img
-									title="My Personal Website"
-									className="link-icon"
-									src={myIcon}
-								></img>
-							</a>
-							<a className="my-link" href="https://github.com/josiaheakle">
-								<img title="My Code" className="link-icon" src={ghIcon}></img>
-							</a>
-
-							<a
-								className="my-link"
-								href="https://twitter.com/JosiahEakle"
-								title="Twitter"
-							>
-								<img
-									className="link-icon"
-									src={twIcon}
-									alt="Twitter Icon"
-								></img>
-							</a>
-						</span>
+				<div className="LocationInformationContainer">
+					<div className="LocationInformation">
+						<h4>Ready to establish your online presence?</h4>
+						{/* <h6>I would love to help!</h5> */}I would love to help! With
+						over a year developing web applications, I am excited to design,
+						develop and deploy the{" "}
+						<strong>perfect custom website for your restaurant</strong>.
 					</div>
+					<Contact />
 				</div>
 			</div>
 		</div>

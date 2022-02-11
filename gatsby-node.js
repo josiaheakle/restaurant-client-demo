@@ -40,48 +40,47 @@ async function createMenuPages(graphql, actions) {
 			`);
 
 
-	console.log(result);
 	if (result.errors) throw result.errors;
 
 	const menuItems = result.data.allStrapiMenuItem.nodes;
 	const menus = result.data.allStrapiMenu.nods;
 
-/**
- * slug
-			  id
-			  preview {
-				formats {
-				  large {
-					url
+	/**
+	 * slug
+				  id
+				  preview {
+					formats {
+					  large {
+						url
+					  }
+					}
 				  }
-				}
-			  }
-			  description
-			  title
- */
+				  description
+				  title
+	 */
 
 	menuItems
 		.forEach((item) => {
 			const { id, slug, preview, description, title } = item;
 			const menuPath = `/menu-item/${slug}`;
 
-			console.log({item, menuPath, slug})
+
 
 			createPage({
 				path: menuPath,
 				component: path.resolve("./src/templates/menu-items/MenuItemPage.tsx"),
-				context: { 
+				context: {
 					id,
 					// image : imageUrl,
 					image: preview[0].url,
 					imageAlt: preview[0].alternativeText,
-					descr : description,
-					title : title
-				 },
+					descr: description,
+					title: title
+				},
 			});
 		});
 }
 
-exports.createPages = async ({ graphql, actions }) => {
-	await createMenuPages(graphql, actions);
-};
+// exports.createPages = async ({ graphql, actions }) => {
+// 	await createMenuPages(graphql, actions);
+// };

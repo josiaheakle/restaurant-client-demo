@@ -24,7 +24,6 @@ export const Header: React.FC<HeaderProps> = ({
 	subtitle,
 	icon,
 }) => {
-	console.log({ pages, title, subtitle, icon });
 	const [isSmall, setIsSmall] = React.useState(true);
 	const [isOpen, setIsOpen] = React.useState(false);
 	const isMobile = useIsMobile();

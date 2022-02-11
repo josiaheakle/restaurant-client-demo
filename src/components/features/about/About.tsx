@@ -33,7 +33,6 @@ const About: React.FC<AboutProps> = ({}) => {
 			query={sectionQuery}
 			render={(data) => {
 				const info: Section = data.allStrapiSection.nodes[0];
-				console.log(data);
 				return (
 					<div className="aboutContainer" id="about">
 						{isMobile ? (

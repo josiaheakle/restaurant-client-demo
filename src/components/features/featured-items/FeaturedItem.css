@@ -13,6 +13,10 @@
     z-index: -1;
 } */
 
+.FeaturedItemGalleryContainer {
+	background-color: var(--light);
+}
+
 .featuredItem {
 	background-position: center;
 	background-attachment: fixed;
@@ -75,7 +79,7 @@
 
 @media only screen and (max-width: 1023px) {
 	.featuredItemInfo > div > h3 {
-		line-height: 1.5rem;
+		line-height: 2rem;
 	}
 
 	.featuredItemInfo > div {

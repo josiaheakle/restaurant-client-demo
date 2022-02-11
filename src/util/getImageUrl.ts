@@ -30,8 +30,6 @@ class ImageHandler {
 	}
 
 	static getBestImage(image: Preview): string {
-		console.log(`get best image called`);
-		console.log(image);
 		return (
 			image.url ||
 			image.formats.large?.url ||
@@ -54,7 +52,6 @@ class ImageHandler {
 			return obj;
 		});
 		imageWidths.push({ original: image.width });
-		console.log(imageWidths);
 		return imageWidths.find((val) => val);
 	}
 }

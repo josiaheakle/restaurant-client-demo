@@ -9,7 +9,10 @@ interface Menu {
 
 interface CategoryMenu extends Menu {
 	categories: {
-		[index: string]: Array<MenuItem>;
+		[index: string]: {
+			menu_order: number;
+			menu_items: Array<MenuItem>;
+		};
 	};
 }
 

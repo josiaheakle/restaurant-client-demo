@@ -111,12 +111,12 @@
 	background-size: cover;
 }
 
-.FoodMenuItem {
-	min-height: 80px;
-	display: inline;
-	/* flex-direction: row; */
-	/* align-items: flex-start; */
-}
+/* .FoodMenuItem { */
+/* min-height: 80px; */
+/* display: inline; */
+/* flex-direction: row; */
+/* align-items: flex-start; */
+/* } */
 
 .FoodMenuItem > img {
 	max-width: 200px;
@@ -127,10 +127,12 @@
 	/* display: flex;
 	flex-direction: column; */
 }
-/* 
-.MenuItemTitle > h5 {
 
-} */
+.MenuItemTitleTop > h5 {
+	font-size: clamp(1.2rem, 1.777rem, 2vw);
+	font-weight: bold;
+	/* font-family: "Courier New"; */
+}
 
 .MenuItemTitleTop {
 	display: flex;
@@ -150,11 +152,13 @@
 }
 
 .MenuCategory > h4 {
-	margin: 0;
-	margin-block-end: 1rem;
+	/* margin: 0; */
+	margin-block-end: 1.33rem;
+	margin-block-end: 1.33rem;
 	width: fit-content;
-	border-left: 1px solid black;
-	border-bottom: 1px solid black;
+	/* border-left: 1px solid black; */
+	border-bottom: 1px solid var(--orange);
+	align-self: center;
 }
 
 .FoodMenuCardHeaderContainer {
@@ -195,7 +199,7 @@
 
 	.FoodMenuTab {
 		border-top-right-radius: 8px;
-		border-top-left-radius: 0px;
+		border-top-left-radius: 8px;
 		border-bottom-right-radius: 8px;
 		border-bottom-left-radius: 0px;
 		background-color: var(--grey);
@@ -219,8 +223,8 @@
 	}
 
 	.nav-placeholder {
-		width: 120px;
-		height: 100px;
+		width: 112px;
+		height: 90px;
 	}
 
 	.FoodMenuImage {

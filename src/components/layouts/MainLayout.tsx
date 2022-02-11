@@ -29,7 +29,6 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
 	brandIcon,
 	children,
 }) => {
-	console.log({ title, subtitle });
 	return (
 		<>
 			<Helmet>

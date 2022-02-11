@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
 
 import "./ButtonLink.css";
 
@@ -18,23 +17,15 @@ export const ButtonLink: React.FC<ButtonProps> = ({
 	onClick,
 	selected,
 }) => {
-	return link ? (
-		<Link
-			className={`ButtonLink ${large ? "large" : ""} ${
-				selected ? "selected" : ""
-			}`}
-			to={link}
-		>
-			{title}
-		</Link>
-	) : onClick ? (
+	return (
 		<a
 			className={`ButtonLink ${large ? "large" : ""} ${
 				selected ? "selected" : ""
 			}`}
+			href={link}
 			onClick={onClick}
 		>
 			{title}
 		</a>
-	) : null;
+	);
 };
